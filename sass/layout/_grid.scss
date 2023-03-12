@@ -1,0 +1,51 @@
+.row {
+  max-width: $grid-width;
+  // background-color: #eee;
+  margin: 0 auto;
+  margin-bottom: $gutter-vertical;
+
+  //.row:not:last-child
+  &:not(:last-child) {
+    margin-bottom: $gutter-vertical;
+  }
+
+  @include clearfix;
+  [class^="col-"] {
+    // background-color: orangered;
+    float: left;
+
+    &:not(:last-child) {
+      margin-right: $gutter-horizontal;
+    }
+  }
+
+  .col-1-of-2 {
+    width: calc((100% - #{$gutter-horizontal}) / 2);
+  }
+
+  //100 persen dari width (1440px) dan dikurangi 2 kali margin atau gutter yang ada di samping kanan masing2 kolom kecuali last child, lalu dibagi tiga
+  .col-1-of-3 {
+    width: calc((100% - 2 * #{$gutter-horizontal}) / 3);
+  }
+
+  .col-2-of-3 {
+    width: calc(
+      2 * ((100% - 2 * #{$gutter-horizontal}) / 3) + #{$gutter-horizontal}
+    );
+  }
+
+  .col-1-of-4 {
+    width: calc((100% - 3 * #{$gutter-horizontal}) / 4);
+  }
+
+  .col-2-of-4 {
+    width: calc((100% - #{$gutter-horizontal}) / 2);
+  }
+
+  // 3 dikali (100% width dikurangi 3 dikali gutter-horinzontal(6rem) lalu dibagi 4) di tambah 2 dikali gutter-horizontal(6rem)
+  .col-3-of-4 {
+    width: calc(
+      3 * ((100% - 3 * #{$gutter-horizontal}) / 4) + 2 * #{$gutter-horizontal}
+    );
+  }
+}

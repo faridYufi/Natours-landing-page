@@ -1,0 +1,152 @@
+.navigation {
+  &__checkbox {
+    display: none;
+  }
+  &__button {
+    top: 6rem;
+    right: 6rem;
+    width: 7rem;
+    height: 7rem;
+    position: fixed;
+    border-radius: 50%;
+    background-color: $color-white;
+    z-index: 200;
+    box-shadow: $box-shadow-default;
+    text-align: center;
+    transition: all 0.3s;
+    //   animation: moveInTop 0.5s ease-out 0.75s;
+    //   animation-fill-mode: backwards;
+  }
+  &__background {
+    position: fixed;
+    top: 6.5rem;
+    right: 6.5rem;
+    background-image: radial-gradient(
+      $color-primary-light,
+      $color-primary-dark
+    );
+    border-radius: 50%;
+    width: 6rem;
+    height: 6rem;
+    z-index: 100;
+    // animation-fill-mode: backwards;
+    // animation: moveInTop 0.5s ease-out 0.75s;
+    // display: transparent;
+    // transform: scale(70);
+    transition: transform 0.8s cubic-bezier(0.66, 0.24, 0.24, 0.99);
+  }
+  &__nav {
+    position: fixed;
+    height: 100vh;
+    top: 0;
+    right: 0;
+    z-index: 150;
+    backface-visibility: hidden;
+    transition: all 0.8s cubic-bezier(0.66, 0.24, 0.24, 0.99);
+
+    opacity: 0;
+    width: 0;
+  }
+  &__list {
+    // display: inline-block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    list-style: none;
+  }
+  &__item {
+    margin-bottom: 1rem;
+  }
+  &__link {
+    &:link,
+    &:visited {
+      display: inline-block;
+      font-size: 3rem;
+      text-decoration: none;
+      font-weight: 380;
+      color: $color-white;
+      text-transform: uppercase;
+      background-image: linear-gradient(
+        120deg,
+        transparent 0%,
+        transparent 50%,
+        $color-white 50%
+      );
+      padding: 1rem 2rem;
+      background-size: 226%;
+      transition: all 0.4s;
+    }
+    &:hover,
+    &:active {
+      background-position: 100%;
+      color: $color-primary;
+      transform: translateX(1rem);
+      border-radius: 3px;
+    }
+  }
+
+  //Functionality
+
+  &__checkbox:checked ~ &__background {
+    transform: scale(70);
+  }
+  &__checkbox:checked ~ &__nav {
+    opacity: 1;
+    width: 100%;
+  }
+
+  // Styling Hamburger Section
+
+  &__icon {
+    position: relative;
+    margin-top: 3.3rem;
+    &,
+    &::before,
+    &::after {
+      width: 3rem;
+      display: inline-block;
+      height: 2px;
+      background-color: $color-grey-dark-3;
+    }
+
+    &::before,
+    &::after {
+      content: "";
+      left: 0;
+      position: absolute;
+      transition: all 0.2s;
+    }
+    &::before {
+      top: -0.8rem;
+    }
+    &::after {
+      top: 0.8rem;
+    }
+  }
+  &__button:hover &__icon::before {
+    top: -1rem;
+  }
+  &__button:hover &__icon::after {
+    top: 1rem;
+  }
+
+  &__checkbox:checked + &__button:hover {
+    transform: scale(0.9);
+  }
+
+  &__checkbox:checked + &__button &__icon {
+    background-color: transparent;
+  }
+
+  &__checkbox:checked + &__button &__icon::before {
+    transform: rotate(-135deg);
+    top: 0;
+    transition: all 0.5s;
+  }
+  &__checkbox:checked + &__button &__icon:after {
+    transform: rotate(-45deg);
+    top: 0;
+    transition: all 0.5s;
+  }
+}

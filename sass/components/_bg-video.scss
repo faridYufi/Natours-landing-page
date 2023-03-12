@@ -1,0 +1,19 @@
+.bg-video {
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  opacity: 0.15;
+  overflow: hidden;
+  //The overflow CSS shorthand property sets the desired behavior for an element's overflow — i.e. when an element's content is too big to fit in its block formatting context — in both directions.
+
+  &__content {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    // filter: brightness(50%);
+  }
+}
+//The object-fit CSS property sets how the content of a replaced element, such as an <img> or <video>, should be resized to fit its container.
